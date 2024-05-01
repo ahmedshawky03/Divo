@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:login_signup_flow_app/screens/login_screen.dart';
-import 'package:login_signup_flow_app/screens/otp_screen.dart';
 import 'package:login_signup_flow_app/screens/loginpage.dart';
 import 'package:login_signup_flow_app/screens/signup_page.dart';
 import 'package:login_signup_flow_app/customtextfield.dart';

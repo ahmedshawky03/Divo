@@ -1,17 +1,17 @@
 import 'package:login_signup_flow_app/customtextfield.dart';
 import 'package:flutter/material.dart';
-import 'package:login_signup_flow_app/MyPasswordField.dart';
+import 'package:login_signup_flow_app/screens/HomeScreen.dart';
 import 'package:login_signup_flow_app/screens/loginpage.dart';
-import 'package:login_signup_flow_app/screens/login_success.dart';
 
-class CreatePasswordScreen extends StatefulWidget {
-  const CreatePasswordScreen({super.key});
+
+class LoginSuccessScreen extends StatefulWidget {
+  const LoginSuccessScreen({super.key});
 
   @override
-  State<CreatePasswordScreen> createState() => createpass();
+  State<LoginSuccessScreen> createState() => logsucc();
 }
 
-class createpass extends State<CreatePasswordScreen> {
+class logsucc extends State<LoginSuccessScreen> {
   var formKey = GlobalKey<FormState>();
   final myController = TextEditingController();
 
@@ -45,23 +45,27 @@ class createpass extends State<CreatePasswordScreen> {
                           //Column A
                           children: [
                             Padding(
-                              padding: const EdgeInsets.all(5.0),
+                              padding: const EdgeInsets.all(0.0),
                               child: Image.asset(
-                                'assets/newPass.png',
-                                width: screenWidth * 0.5,
+                                'assets/success.png',
+                                width: screenWidth * 1.1,
                               ),
+                            ),
+                            SizedBox(
+                              height: screenHeight * 0.04,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text('Enter the new password ',
+                                Text(
+                                    'Login Success',
                                     style: TextStyle(
                                         fontFamily: 'inter',
                                         fontSize: 30,
                                         shadows: <Shadow>[
                                           Shadow(
                                             blurRadius: 3.0,
-                                            color: Colors.black,
+                                            color:  Colors.black,
                                           ),
                                         ],
                                         fontWeight: FontWeight.w500,
@@ -70,41 +74,20 @@ class createpass extends State<CreatePasswordScreen> {
                             )
                           ],
                         ),
-                        SizedBox(
-                          height: screenHeight * 0.1,
-                        ),
-                        Form(
-                          key: formKey,
-                          child: Column(
-                            //Column B
-                            children: [
-                              MyPasswordField(
-                                  flag: true,
-                                  myHintText: 'New Password',
-                                  myValidatorHint:
-                                      'Please enter valid password!'),
-                              SizedBox(
-                                height: screenHeight * 0.01,
-                              ),
-                              MyPasswordField(
-                                  flag: true,
-                                  myHintText: 'Confirm Password',
-                                  myValidatorHint: 'Password doesn`t match!'),
-                            ],
-                          ),
-                        ),
+
                         SizedBox(
                           height: screenHeight * 0.04,
                         ),
                         myDefualtFieldBotton(
+                          myWidth: screenWidth * 0.5,
                           myPress: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => LoginSuccessScreen(),
+                                  builder: (context) => HomeScreen(),
                                 ));
                           },
-                          myData: 'Submit',
+                          myData: 'Go to Home Page',
                         ),
                       ],
                     ),

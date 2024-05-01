@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:login_signup_flow_app/screens/loginpage.dart';
-import 'package:login_signup_flow_app/screens/signup_page.dart';
-import 'package:login_signup_flow_app/screens/otp_screen.dart';
-import 'package:login_signup_flow_app/screens/forgot_password_screen.dart';
+
 import 'package:login_signup_flow_app/customtextfield.dart';
+import 'package:login_signup_flow_app/screens/create_password_screen.dart';
+
 var formKey = GlobalKey<FormState>();
 class Verification extends StatelessWidget {
 
@@ -111,7 +111,7 @@ class Verification extends StatelessWidget {
 
                               ],
                             ),
-                            SizedBox( height: screenHeight * 0.05,),
+                            SizedBox( height: screenHeight * 0.08,),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -159,14 +159,15 @@ class Verification extends StatelessWidget {
                                   ),
                                   SizedBox( height: screenHeight * 0.05,),
                                   myDefualtFieldBotton(
-                                      myWidth: 190,
-                                      myPress: () {
-                                        if (formKey.currentState!.validate()) {
-                                          print('Validated');
-                                        }
-                                      },
-
-                                      myData: 'Verify'),
+                                    myPress: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => CreatePasswordScreen(),
+                                          ));
+                                    },
+                                    myData: 'Verify',
+                                  ),
                                   SizedBox(
                                     height: screenHeight * 0.01,
                                   ),

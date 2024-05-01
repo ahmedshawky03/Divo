@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:login_signup_flow_app/screens/signup_page.dart';
 import 'package:login_signup_flow_app/screens/forgot_password_screen.dart';
 import 'package:login_signup_flow_app/MyPasswordField.dart';
+import 'package:login_signup_flow_app/screens/HomeScreen.dart';
 import 'package:login_signup_flow_app/screens/create_password_screen.dart';
 
 class logIn extends StatefulWidget {
@@ -20,10 +21,10 @@ class _logInState extends State<logIn> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    debugShowCheckedModeBanner: false;
+    debugShowCheckedModeBanner:
+    false;
     return Scaffold(
       appBar: AppBar(
-
         backgroundColor: Colors.white,
         elevation: 0,
         iconTheme: const IconThemeData(
@@ -31,7 +32,6 @@ class _logInState extends State<logIn> {
         ),
       ),
       body: SafeArea(
-
         child: Scaffold(
           backgroundColor: Colors.white,
           body: Center(
@@ -102,8 +102,11 @@ class _logInState extends State<logIn> {
                               SizedBox(
                                 height: screenHeight * 0.01,
                               ),
-                              MyPasswordField(flag: true, myHintText: 'Password', myValidatorHint: 'Please enter valid password!'),
-
+                              MyPasswordField(
+                                  flag: true,
+                                  myHintText: 'Password',
+                                  myValidatorHint:
+                                      'Please enter valid password!'),
                             ],
                           ),
                         ),
@@ -113,7 +116,6 @@ class _logInState extends State<logIn> {
                         Padding(
                           padding: const EdgeInsets.symmetric(
                             horizontal: 20,
-
                           ),
                           child: Align(
                             alignment: Alignment.centerLeft,
@@ -123,14 +125,14 @@ class _logInState extends State<logIn> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                        const ForgotPasswordScreen()));
+                                            const ForgotPasswordScreen()));
                               },
                               child: const Text(
                                 "Forgot Password?",
                                 style: TextStyle(
                                   color: Color(0xFFD85024),
                                   fontWeight: FontWeight.bold,
-                                    decoration: TextDecoration.underline,
+                                  decoration: TextDecoration.underline,
                                 ),
                               ),
                             ),
@@ -150,6 +152,13 @@ class _logInState extends State<logIn> {
                             myPress: () {
                               if (formKey.currentState!.validate()) {
                                 print('Validated');
+
+
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => HomeScreen(),
+                                    ));
                               }
                             },
                             myData: 'Log in'),

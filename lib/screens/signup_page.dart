@@ -1,10 +1,8 @@
 import 'package:login_signup_flow_app/customtextfield.dart';
+import 'package:login_signup_flow_app/screens/HomeScreen.dart';
 import 'package:login_signup_flow_app/screens/loginpage.dart';
-import 'package:login_signup_flow_app/screens/signup_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:login_signup_flow_app/screens/forgot_password_screen.dart';
-import 'package:login_signup_flow_app/screens/register_screen.dart';
 import 'package:login_signup_flow_app/MyPasswordField.dart';
 
 class SignUp extends StatefulWidget {
@@ -115,6 +113,11 @@ class _SignUpState extends State<SignUp> {
                           myPress: () {
                             if (formKey.currentState!.validate()) {
                               print('Validated');
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => HomeScreen(),
+                                  ));
                             }
                           },
                           myData: 'Sign Up'),

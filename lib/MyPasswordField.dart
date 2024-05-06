@@ -47,55 +47,58 @@ class _MyPasswordFieldState extends State<MyPasswordField> {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      keyboardType: widget.mykeyboardType,
-      obscureText: _isObscured,
-      // Use _isObscured instead of widget.flag
-      validator: (value) {
-        if (value!.isEmpty) {
-          return widget.myValidatorHint;
-        }
-      },
-      focusNode: _focusNode,
-      decoration: InputDecoration(
-        hintText: widget.myHintText,
-        contentPadding: EdgeInsets.only(left: 15, right: 15),
-        suffixIcon: IconTheme(
-          data: IconThemeData(
-            color: _isFocused ? Colors.deepOrange : Colors.grey[600],
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(5, 0, 5, 10),
+      child: TextFormField(
+        keyboardType: widget.mykeyboardType,
+        obscureText: _isObscured,
+        // Use _isObscured instead of widget.flag
+        validator: (value) {
+          if (value!.isEmpty) {
+            return widget.myValidatorHint;
+          }
+        },
+        focusNode: _focusNode,
+        decoration: InputDecoration(
+          hintText: widget.myHintText,
+          contentPadding: EdgeInsets.only(left: 15, right: 15),
+          suffixIcon: IconTheme(
+            data: IconThemeData(
+              color: _isFocused ? Colors.deepOrange : Colors.grey[600],
+            ),
+            child: GestureDetector(
+              onTap: () {
+                setState(() {
+                  _isObscured = !_isObscured; // Toggle _isObscured when tapped
+                });
+              },
+              child: _isObscured
+                  ? Icon(
+                      Icons.visibility_off,
+                      color: Colors.grey,
+                    )
+                  : Icon(
+                      Icons.visibility,
+                      color: Colors.deepOrange,
+                    ),
+            ),
           ),
-          child: GestureDetector(
-            onTap: () {
-              setState(() {
-                _isObscured = !_isObscured; // Toggle _isObscured when tapped
-              });
-            },
-            child: _isObscured
-                ? Icon(
-                    Icons.visibility_off,
-                    color: Colors.grey,
-                  )
-                : Icon(
-                    Icons.visibility,
-                    color: Colors.deepOrange,
-                  ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(30),
+            borderSide: BorderSide(
+              color: _isFocused ? Colors.deepOrange : Colors.grey,
+            ),
           ),
-        ),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
-          borderSide: BorderSide(
-            color: _isFocused ? Colors.deepOrange : Colors.grey,
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(30),
+            borderSide: BorderSide(
+              color: _isFocused ? Colors.deepOrange : Colors.grey,
+            ),
           ),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
-          borderSide: BorderSide(
-            color: _isFocused ? Colors.deepOrange : Colors.grey,
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(30),
+            borderSide: BorderSide(color: Colors.deepOrange),
           ),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
-          borderSide: BorderSide(color: Colors.deepOrange),
         ),
       ),
     );

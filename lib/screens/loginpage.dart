@@ -21,8 +21,6 @@ class _logInState extends State<logIn> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    debugShowCheckedModeBanner:
-    false;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -152,7 +150,6 @@ class _logInState extends State<logIn> {
                             myPress: () {
                               if (formKey.currentState!.validate()) {
                                 print('Validated');
-
 
                                 Navigator.push(
                                     context,

@@ -4,14 +4,15 @@ import 'package:login_signup_flow_app/screens/loginpage.dart';
 import 'package:login_signup_flow_app/screens/signup_page.dart';
 import 'package:login_signup_flow_app/customtextfield.dart';
 import 'package:login_signup_flow_app/screens/Verification.dart';
-var formKey = GlobalKey<FormState>();
-class ForgotPasswordScreen extends StatelessWidget {
+import 'package:url_launcher/link.dart';
 
+var formKey = GlobalKey<FormState>();
+
+class ForgotPasswordScreen extends StatelessWidget {
   const ForgotPasswordScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
@@ -60,7 +61,6 @@ class ForgotPasswordScreen extends StatelessWidget {
                                     color: Colors.black,
                                   ),
                                 ),
-
                                 Center(
                                   child: Text(
                                     'Enter your email or phone and we’ll \n send you a link to get back into your account ',
@@ -73,7 +73,6 @@ class ForgotPasswordScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-
                               ],
                             ),
                             SizedBox(
@@ -94,22 +93,21 @@ class ForgotPasswordScreen extends StatelessWidget {
                                   SizedBox(
                                     height: screenHeight * 0.05,
                                   ),
-
                                   myDefualtFieldBotton(
-
+                                    myWidth: screenWidth * 0.6,
                                     myPress: () {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) => Verification(),
+                                            builder: (context) =>
+                                                Verification(),
                                           ));
                                     },
-                                    myData: 'Back to Login',
+                                    myData: 'Send Verification Code',
                                   ),
-
-                                SizedBox(
-                                height: screenHeight * 0.01,
-                              ),
+                                  SizedBox(
+                                    height: screenHeight * 0.01,
+                                  ),
                                   Align(
                                     alignment: Alignment.center,
                                     child: GestureDetector(
@@ -118,15 +116,23 @@ class ForgotPasswordScreen extends StatelessWidget {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                const ForgotPasswordScreen()));
+                                                    const ForgotPasswordScreen()));
                                       },
-                                      child: Text(
-                                        "Can`t reset your password?",
-                                        style: TextStyle(
-                                          color: Color(0xFFD85024),
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 12,
-
+                                      child: Link(
+                                        target: LinkTarget.self,
+                                        uri: Uri.parse(
+                                            'https://help.remind.com/hc/en-us/articles/201920345-I-can-t-reset-my-password'),
+                                        builder: (context, followLink) =>
+                                            GestureDetector(
+                                                onTap: followLink,
+                                                 child: Text(
+                                            "Can`t reset your password?",
+                                            style: TextStyle(
+                                              color: Color(0xFFD85024),
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 12,
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -148,7 +154,8 @@ class ForgotPasswordScreen extends StatelessWidget {
                                         child: Text(
                                           'or',
                                           style: TextStyle(
-                                              color: Colors.grey[700], fontSize: 18),
+                                              color: Colors.grey[700],
+                                              fontSize: 18),
                                         ),
                                       ),
                                       Expanded(
@@ -172,13 +179,11 @@ class ForgotPasswordScreen extends StatelessWidget {
                                             MaterialPageRoute(
                                               builder: (context) => SignUp(),
                                             ));
-
                                       },
                                       myData: 'Create new account'),
-                              ],
+                                ],
                               ),
                             ),
-
                           ],
                         ),
                       ],
@@ -187,52 +192,50 @@ class ForgotPasswordScreen extends StatelessWidget {
                 ),
                 Container(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20),
-                      child: Column(
+                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 1,
+                        color: Colors.grey[300],
+                      ),
+                      SizedBox(
+                        height: screenHeight * 0.01,
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+                          Text(
+                            ' ',
+                          ),
                           Container(
-                            height: 1,
-                            color: Colors.grey[300],
-                          ),
-                          SizedBox(
-                            height: screenHeight * 0.01,
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                ' ',
-
-                              ),
-                              Container(
-                                width: 180,
-                                height: 34,
-                                decoration: BoxDecoration(
-                                    color: Colors.deepOrange,
-                                    borderRadius: BorderRadius.circular(39)),
-                                child: myDefualtFieldBottonArrow(
-                                  myPress: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) => logIn(),
-                                        ));
-                                  },
-                                  myData: 'Back to Login',
-                                ),
-                              )
-                            ],
-                          ),
+                            width: 180,
+                            height: 34,
+                            decoration: BoxDecoration(
+                                color: Colors.deepOrange,
+                                borderRadius: BorderRadius.circular(39)),
+                            child: myDefualtFieldBottonArrow(
+                              myPress: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => logIn(),
+                                    ));
+                              },
+                              myData: 'Back to Login',
+                            ),
+                          )
                         ],
                       ),
-                    ))
+                    ],
+                  ),
+                ))
               ],
             ),
           ),
         ),
       ),
-
     );
   }
 }

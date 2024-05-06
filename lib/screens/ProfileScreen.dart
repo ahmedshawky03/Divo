@@ -1,29 +1,108 @@
 import 'package:flutter/material.dart';
+import 'package:login_signup_flow_app/screens/Settings/settings.dart';
 import 'package:login_signup_flow_app/screens/Widget_Methods/ButtomNavBar.dart';
 import 'package:login_signup_flow_app/screens/Widget_Methods/Widgetappbar.dart';
+import 'package:login_signup_flow_app/customtextfield.dart';
+import 'package:login_signup_flow_app/screens/loginpage.dart';
 
-import 'HomeScreen.dart';
 import 'Widget_Methods/ProfileMenuController.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     var IsDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
     return Scaffold(
-      // appBar: AppBar(
-      //   leading: IconButton(
-      //     onPressed: (){
-      //       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const HomeScreen(),));
-      //     },
-      //     icon: const Icon(Icons.chevron_left ,size: 40.0,),
-      //
-      //   ),
-      //   title: const Text('Profile',style: TextStyle(color:Colors.black87,fontSize: 24.0),),
-      //   centerTitle: true,
-      // ),
       appBar: MyAppBar(),
-      bottomNavigationBar:  Customized_BottomNavBar(val: 2,),
+      drawer: Drawer(
+        child: Container(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: <Widget>[
+              Theme(
+                data: Theme.of(context).copyWith(
+                  dividerTheme:
+                  const DividerThemeData(color: Colors.transparent),
+                ),
+                child: DrawerHeader(
+                  child: Image.asset(
+                    'assets/DIVO_logo_transparent.png',
+                    width: screenWidth, // Increase the width of the logo
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                          const ProfileScreen()));
+                },
+                child: ListTile(
+                  leading: Icon(Icons.person_pin,
+                    color: Colors.deepOrange,),
+                  title: Text('Profile'),
+                ),
+              ),
+              ListTile(
+                leading: Icon(Icons.home,
+                  color: Colors.deepOrange,),
+                title: Text('Home'),
+              ),
+              ListTile(
+                leading: Icon(Icons.store,
+                  color: Colors.deepOrange,),
+                title: Text('Store'),
+              ),
+              ListTile(
+                leading: Icon(Icons.shopping_cart,
+                  color: Colors.deepOrange,),
+                title: Text('Cart'),
+              ),
+              ListTile(
+                leading: Icon(Icons.build,
+                  color: Colors.deepOrange,),
+                title: Text('Repair'),
+              ),
+              ListTile(
+                leading: Icon(Icons.help,
+                  color: Colors.deepOrange,),
+                title: Text('Help & Support',
+                ),
+              ),
+              // Settings section
+              ListTile(
+                leading: Icon(Icons.settings,
+                  color: Colors.deepOrange,
+                ),
+                title: Text('Settings'),
+              ),
+              // About section
+              ListTile(
+                leading: Icon(Icons.info,
+                  color: Colors.deepOrange,),
+                title: Text('About'),
+              ),
+              // Sign Out section
+
+              Padding(
+                padding: const EdgeInsets.fromLTRB(50, 40, 50, 0),
+                child: SignOutBotton(
+                  myPress: () {
+                    logIn();
+                  },
+                  myData: 'Sign Out',
+                ),
+              ),
+
+            ],
+          ),
+        ),
+      ),
+      bottomNavigationBar:  Customized_BottomNavBar(val: 4,),
       body: SingleChildScrollView(
         child:Container(
           padding: const EdgeInsets.all(20.0),
@@ -66,7 +145,13 @@ class ProfileScreen extends StatelessWidget {
                 ProfileMenuWidget(
                   title: 'Settings',
                   icon: Icons.settings,
-                  onpress: (){},
+                  onpress: (){
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Settings(),
+                        ));
+                  },
                   endIcon: false,
                   textColor: Colors.black87,
                 ),

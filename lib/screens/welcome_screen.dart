@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:login_signup_flow_app/customtextfield.dart';
 import 'package:login_signup_flow_app/screens/loginpage.dart';
 import 'package:login_signup_flow_app/screens/signup_page.dart';
+
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
 
@@ -17,35 +18,32 @@ class WelcomeScreen extends StatelessWidget {
             Container(
               color: Colors.white,
               height: screenHeight * 0.05,
-
             ),
             Image.asset(
               "assets/DIVO_logo_transparent.png",
               fit: BoxFit.cover,
               scale: 5,
-
             ),
             const Spacer(),
             const Spacer(),
             Container(
-              child:Column(
+              child: Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        'Welcome to ',
-                        style: TextStyle(
-                            fontFamily: 'inter',
-                            fontSize: 30,
-                            shadows: <Shadow>[
-                              Shadow(
-                                blurRadius: 3.0,
-                                color:  Colors.black,
-                              ),
-                            ],
-                            fontWeight: FontWeight.w500,
-                            color: Colors.black)),
+                      Text('Welcome to ',
+                          style: TextStyle(
+                              fontFamily: 'inter',
+                              fontSize: 30,
+                              shadows: <Shadow>[
+                                Shadow(
+                                  blurRadius: 3.0,
+                                  color: Colors.black,
+                                ),
+                              ],
+                              fontWeight: FontWeight.w500,
+                              color: Colors.black)),
                       Text('DIVO!',
                           style: TextStyle(
                               fontFamily: 'inter',
@@ -60,8 +58,7 @@ class WelcomeScreen extends StatelessWidget {
                               color: Colors.deepOrange[800]))
                     ],
                   ),
-                  Text(
-                      'to repair your device safely',
+                  Text('to repair your device safely',
                       style: TextStyle(
                           fontFamily: 'inter',
                           fontSize: 17,
@@ -70,7 +67,7 @@ class WelcomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-             SizedBox(height: screenHeight * 0.05),
+            SizedBox(height: screenHeight * 0.05),
             //login button
             Padding(
               padding: const EdgeInsets.symmetric(
